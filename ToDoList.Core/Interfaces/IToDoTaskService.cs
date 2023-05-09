@@ -5,9 +5,9 @@ namespace ToDoList.Core.Interfaces;
 
 public interface IToDoTaskService
 {
-    Task<IEnumerable<ToDoTask>> GetAllTasksAsync();
-    Task<ToDoTask> GetTaskByIdAsync(ObjectId id);
-    Task AddTaskAsync(ToDoTask task);
+    Task<IEnumerable<ToDoTask>> GetAllToDoTasksAsync();
+    Task<ToDoTask> GetToDoTaskByIdAsync(ObjectId id);
+    Task AddToDoTaskAsync(ToDoTask task);
     Task UpdateTaskAsync(ToDoTask task);
     Task DeleteTaskAsync(ObjectId id);
 }

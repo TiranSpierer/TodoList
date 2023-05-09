@@ -6,17 +6,17 @@ using ToDoList.Core.Interfaces;
 namespace ToDoList.Web.Controllers;
 public class ToDoTaskController : Controller
 {
-    private readonly IToDoTaskService _taskService;
+    private readonly IToDoTaskService _toDoTaskService;
 
-    public ToDoTaskController(IToDoTaskService taskService)
+    public ToDoTaskController(IToDoTaskService toDoTaskService)
     {
-        _taskService = taskService;
+        _toDoTaskService = toDoTaskService;
     }
 
     // GET: Task
     public async Task<IActionResult> Index()
     {
-        var tasks = await _taskService.GetAllTasksAsync();
+        var tasks = await _toDoTaskService.GetAllToDoTasksAsync();
         return View(tasks);
     }
 
@@ -28,7 +28,7 @@ public class ToDoTaskController : Controller
             return NotFound();
         }
 
-        var task = await _taskService.GetTaskByIdAsync(id.Value);
+        var task = await _toDoTaskService.GetToDoTaskByIdAsync(id.Value);
         if (task == null)
         {
             return NotFound();
@@ -46,14 +46,14 @@ public class ToDoTaskController : Controller
     // POST: Task/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Title,Description,DueDate,Priority,Status")] ToDoTask task)
+    public async Task<IActionResult> Create([Bind("Id,Title,Description,DueDate,Priority,Status")] ToDoTask toDoTask)
     {
         if (ModelState.IsValid)
         {
-            await _taskService.AddTaskAsync(task);
+            await _toDoTaskService.AddToDoTaskAsync(toDoTask);
             return RedirectToAction(nameof(Index));
         }
-        return View(task);
+        return View(toDoTask);
     }
 
     // GET: Task/Edit/5
@@ -64,7 +64,7 @@ public class ToDoTaskController : Controller
             return NotFound();
         }
 
-        var task = await _taskService.GetTaskByIdAsync(id.Value);
+        var task = await _toDoTaskService.GetToDoTaskByIdAsync(id.Value);
         if (task == null)
         {
             return NotFound();
@@ -84,7 +84,7 @@ public class ToDoTaskController : Controller
 
         if (ModelState.IsValid)
         {
-            await _taskService.UpdateTaskAsync(task);
+            await _toDoTaskService.UpdateTaskAsync(task);
             return RedirectToAction(nameof(Index));
         }
         return View(task);
@@ -98,7 +98,7 @@ public class ToDoTaskController : Controller
             return NotFound();
         }
 
-        var task = await _taskService.GetTaskByIdAsync(id.Value);
+        var task = await _toDoTaskService.GetToDoTaskByIdAsync(id.Value);
         if (task == null)
         {
             return NotFound();
@@ -112,7 +112,7 @@ public class ToDoTaskController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(ObjectId id)
     {
-        await _taskService.DeleteTaskAsync(id);
+        await _toDoTaskService.DeleteTaskAsync(id);
         return RedirectToAction(nameof(Index));
     }
 }

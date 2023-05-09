@@ -1,0 +1,85 @@
+﻿/* Dark Mode CSS */
+
+body {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+a {
+    color: #42a5f5;
+}
+
+    a:hover {
+        color: #90caf9;
+    }
+
+.form-control,
+.form-select {
+    background-color: #2f2f2f;
+    color: #f0f0f0;
+    border-color: #3c3c3c;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        background-color: #2f2f2f;
+        color: #f0f0f0;
+    }
+
+    .form-control::placeholder,
+    .form-select::placeholder {
+        color: #b0b0b0;
+    }
+
+.btn-primary {
+    background-color: #42a5f5;
+    border-color: #42a5f5;
+}
+
+    .btn-primary:hover {
+        background-color: #90caf9;
+        border-color: #90caf9;
+    }
+
+.btn-secondary {
+    background-color: #616161;
+    border-color: #616161;
+}
+
+    .btn-secondary:hover {
+        background-color: #bdbdbd;
+        border-color: #bdbdbd;
+    }
+
+.btn-danger {
+    background-color: #ef5350;
+    border-color: #ef5350;
+}
+
+    .btn-danger:hover {
+        background-color: #ff8a80;
+        border-color: #ff8a80;
+    }
+
+.card {
+    background-color: #2f2f2f;
+    border-color: #3c3c3c;
+}
+
+.table {
+    background-color: #2f2f2f;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #3c3c3c;
+}
+
+.table thead th {
+    border-bottom: 1px solid #3c3c3c;
+    background-color: #2f2f2f;
+    color: #f0f0f0;
+}
+
+.table tbody td {
+  color: #f0f0f0;
+}

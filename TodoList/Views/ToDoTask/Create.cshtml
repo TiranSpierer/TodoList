@@ -6,39 +6,55 @@
 
 <h2>Create</h2>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="Title" class="control-label">Title</label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create" class="card p-4 shadow-sm">
+            <h5 class="card-title mb-4">New Task</h5>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="form-text text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="form-text text-danger"></span>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="DueDate" class="form-label">Due Date</label>
+                    <input asp-for="DueDate" class="form-control" />
+                    <span asp-validation-for="DueDate" class="form-text text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Priority" class="form-label">Priority</label>
+                    <select asp-for="Priority" class="form-select">
+                        @foreach (var priority in Html.GetEnumSelectList<ToDoTaskPriority>())
+                        {
+                            <option value="@priority.Value">@priority.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Priority" class="form-text text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label">Status</label>
+                <select asp-for="Status" class="form-select">
+                    @foreach (var status in Html.GetEnumSelectList<ToDoTaskStatus>())
+                    {
+                        <option value="@status.Value">@status.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="Status" class="form-text text-danger"></span>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+        <div class="mt-3 text-center">
+            <a asp-action="Index" class="text-muted">Back to List</a>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Description" class="control-label">Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="DueDate" class="control-label">Due Date</label>
-        <input asp-for="DueDate" class="form-control" />
-        <span asp-validation-for="DueDate" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Priority" class="control-label">Priority</label>
-        <select asp-for="Priority" class="form-control" asp-items="Html.GetEnumSelectList<ToDoTaskPriority>()"></select>
-        <span asp-validation-for="Priority" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Status" class="control-label">Status</label>
-        <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<ToDoTaskStatus>()"></select>
-        <span asp-validation-for="Status" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
-    </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

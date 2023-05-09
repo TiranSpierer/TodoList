@@ -13,17 +13,17 @@ public class ToDoTaskService : IToDoTaskService
         _repository = taskRepository;
     }
 
-    public async Task<IEnumerable<ToDoTask>> GetAllTasksAsync()
+    public async Task<IEnumerable<ToDoTask>> GetAllToDoTasksAsync()
     {
         return await _repository.GetAllAsync();
     }
 
-    public async Task<ToDoTask> GetTaskByIdAsync(ObjectId id)
+    public async Task<ToDoTask> GetToDoTaskByIdAsync(ObjectId id)
     {
         return await _repository.GetByIdAsync(id);
     }
 
-    public async Task AddTaskAsync(ToDoTask task)
+    public async Task AddToDoTaskAsync(ToDoTask task)
     {
         await _repository.AddAsync(task);
     }
